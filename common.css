@@ -33,7 +33,7 @@ rt {
   font-size: 0.85em;
   font-weight: normal;
   white-space: nowrap;
-  margin-top: -2.5em;
+  margin-top: -3em;
   color: rgba(100, 65, 37, 0.97); /* 使用半透明颜色值 */
   display: none; /* 默认情况下隐藏拼音 */
 }
