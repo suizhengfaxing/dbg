@@ -7833,35 +7833,56 @@
     </div>
     <script src="https://cdn.bootcss.com/jquery/3.6.0/jquery.min.js"></script>
     <script>
-$(function() {
-  // 点击按钮切换拼音显示状态
-  var showPinyin = false;
-  $("#pinyin-button").click(function() {
-    showPinyin = !showPinyin;
-    if (showPinyin) {
-      $("rt").show();
-      $("#pinyin-button").text("拼");
-      $(this).css("background-color", "rgba(255, 255, 255, 0.7)");
-      $(this).css("color", "rgba(100, 65, 37, 0.7)");
-    } else {
-      $("rt").hide();
-      $("#pinyin-button").text("拼");
-      $(this).css("background-color", "rgba(255, 255, 255, 0.3)");
-      $(this).css("color", "rgba(100, 65, 37, 0.3)");
-    }
-  });
+        $(function() {
+        // 点击按钮切换拼音显示状态
+        var showPinyin = false;
+        $("#pinyin-button").click(function() {
+            showPinyin = !showPinyin;
+            if (showPinyin) {
+            $("rt").show();
+            $("#pinyin-button").text("拼");
+            $(this).css("background-color", "rgba(255, 255, 255, 0.7)");
+            $(this).css("color", "rgba(100, 65, 37, 0.7)");
+            } else {
+            $("rt").hide();
+            $("#pinyin-button").text("拼");
+            $(this).css("background-color", "rgba(255, 255, 255, 0.3)");
+            $(this).css("color", "rgba(100, 65, 37, 0.3)");
+            }
+        });
 
-  // 点击单个字显示/隐藏该字拼音
-  $("ruby").click(function() {
-    if (!showPinyin) {
-      $(this).find("rt").toggle();
-    }
-  });
-
-
-});
+        // 点击单个字显示/隐藏该字拼音
+        $("ruby").click(function() {
+            if (!showPinyin) {
+            $(this).find("rt").toggle();
+            }
+        });
+        });
     </script>
-
+    <script>
+        // 强制禁止用户修改微信客户端的字体大小
+            (function() {
+        
+                if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+                    handleFontSize();
+                } else {
+                    if (document.addEventListener) {
+                        document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+                    } else if (document.attachEvent) {
+                        document.attachEvent("WeixinJSBridgeReady", handleFontSize);
+                        document.attachEvent("onWeixinJSBridgeReady", handleFontSize);  }
+                }
+                function handleFontSize() {
+                    // 设置网页字体为默认大小
+                    WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+                    // 重写设置网页字体大小的事件
+                    WeixinJSBridge.on('menu:setfont', function() {
+                        WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+                    });
+                }
+            })();
+        </script>
+    
 </body>
 
 </html>
