@@ -15,43 +15,14 @@ body {
   font-size: 14px;
   background: #fff;
 }
-ruby {
-  display: inline-flex;
-  flex-direction: column;
-  width: 1.1em;
-  align-items: center;
-  line-height: 1;
-  cursor: pointer;
-}
-
-ruby:hover rt {
-  display: block; /* 修改 display 属性为 block */
-}
-
 rt {
+  width: 18px;
+  white-space: nowrap; /* 不换行 */
   transform: scale(0.5,1);
   font-size: 0.85em;
-  font-weight: normal;
-  white-space: nowrap;
-  margin-top: -2.5em;
-  color: rgba(100, 65, 37, 0.97); /* 使用半透明颜色值 */
-  display: none; /* 默认情况下隐藏拼音 */
+  color: rgba(100, 65, 37, 0.8); /* 使用半透明颜色值 */
+  font-family: "Times New Roman",system-ui, -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif; 
 }
-
-#pinyin-button {
-  position: fixed;
-  top: 5px;
-  right: 5px;
-  width: 18px;
-  height: 18px;
-  border-radius: 3px;
-  background-color: rgba(255, 255, 255, 0.3);
-  color: rgba(100, 65, 37, 0.3);
-  font-size: 12px;
-  cursor: pointer;
-}
-
-
 .container{
     padding:20px 10px 70px 10px!important;
 }
