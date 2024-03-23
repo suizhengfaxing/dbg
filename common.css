@@ -21,14 +21,14 @@ ruby{
   white-space: nowrap; /* 不换行 */
   display: inline-flex;
   flex-direction: column-reverse;
-  max-width: 1em;
+  max-width: 1.1em;
   align-items: center;
   line-height: 1;
 }
 rt {
   white-space: nowrap; /* 不换行 */
   transform: scale(0.5,1) ;
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: rgba(100, 65, 37, 0.8); /* 使用半透明颜色值 */
   font-family: "py-1"; 
 }
