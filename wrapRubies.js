@@ -2,12 +2,15 @@ function wrapRubies() {
     // 获取所有具有 class="container-content" 的 div 元素
     var containers = document.querySelectorAll('.container-content-ZhuYin');
 
-    // 定义不应该出现在行首的标点符号集合
-    var punctuations = '!%),.:;>?]}¢¨°·ˇˉ―‖’”…‰′″›℃∶、。〃〉》」』】〕〗〞︶︺︾﹀﹄﹚﹜﹞！＂％＇），．：；？］｀｜｝～￠';
+    // 循环遍历容器元素
+    for (var j = 0; j < containers.length; j++) {
+        var container = containers[j];
 
-    containers.forEach(function(container) {
         // 在当前容器内获取所有的 ruby 元素
         var rubies = container.querySelectorAll('ruby');
+
+        // 定义不应该出现在行首的标点符号集合
+        var punctuations = '!%),.:;>?]}¢¨°·ˇˉ―‖’”…‰′″›℃∶、。〃〉》」』】〕〗〞︶︺︾﹀﹄﹚﹜﹞！＂％＇），．：；？］｀｜｝～￠';
 
         for (var i = 1; i < rubies.length; i++) {
             var currentRuby = rubies[i];
@@ -19,18 +22,26 @@ function wrapRubies() {
                 var divWrapper = document.createElement('div');
                 divWrapper.style.display = 'inline-block';
 
+                // 克隆当前 ruby 元素和前一个 ruby 元素
+                var clonedPrevRuby = prevRuby.cloneNode(true);
+                var clonedCurrentRuby = currentRuby.cloneNode(true);
+
                 // 将新创建的 div 元素插入到当前 ruby 元素之前
                 container.insertBefore(divWrapper, currentRuby);
 
-                // 将前一个 ruby 元素和当前 ruby 元素放入新创建的包裹容器中
-                divWrapper.appendChild(prevRuby);
-                divWrapper.appendChild(currentRuby);
+                // 将克隆的 ruby 元素放入新创建的包裹容器中
+                divWrapper.appendChild(clonedPrevRuby);
+                divWrapper.appendChild(clonedCurrentRuby);
+
+                // 移除原始的 ruby 元素
+                container.removeChild(prevRuby);
+                container.removeChild(currentRuby);
 
                 // 跳过当前的 ruby 元素，因为它已经与前一个一起处理了
                 i++;
             }
         }
-    });
+    }
 }
 
 wrapRubies();
