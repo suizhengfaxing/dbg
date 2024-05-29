@@ -36,3 +36,21 @@ function wrapRubies() {
 }
 
 wrapRubies();
+
+// 将正文注音加入样式
+function wrapContentInSpan() {
+    // 获取当前网页的 HTML 内容
+    var htmlContent = document.body.innerHTML;
+
+    // 匹配被中括号括起来的内容
+    var regex = /\[([^\[\]]+)\]/g;
+
+    // 使用 replace 方法将匹配到的内容用 <span> 包裹起来
+    var modifiedHtml = htmlContent.replace(regex, '<span class="zhengWen_ZhuYin_span">[$1]</span>');
+
+    // 将修改后的 HTML 内容重新赋值给网页
+    document.body.innerHTML = modifiedHtml;
+}
+
+// 调用函数
+wrapContentInSpan();
