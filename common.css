@@ -341,8 +341,8 @@ rt {
   overflow-wrap: break-word !important;
 }
 
-.zhengWen_XiaoZi_XiaYi {
-  margin-top: 16px;
+.zhengWen_ShuPai_XiaoZi {
+  writing-mode : tb-rl;
   line-height: 1em;
   margin-bottom: 0px;
   padding: 0px;
@@ -352,8 +352,9 @@ rt {
   min-height: 1em;
   color: rgb(100, 65, 37);
   font-family: "楷体", "楷体_GB2312", "SIMKAI";
-  font-size: 14px;
+  font-size: 10px;
   overflow-wrap: break-word !important;
+  margin-left: 5px;
 }
 
 .zhengWen_ShangYi {
